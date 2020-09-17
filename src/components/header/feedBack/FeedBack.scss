@@ -1,0 +1,15 @@
+.feedBack{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+
+  & *{
+    margin: 0 1rem;
+    padding: 0 1rem;
+  }
+
+  .feedBack-btn{
+    border-radius: 50px;
+  }
+}
