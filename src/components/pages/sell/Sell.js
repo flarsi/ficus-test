@@ -34,6 +34,7 @@ export const Sell = () => {
             <div className="hr"></div>
             {state.houses ?
                 <div className="sell-content">
+                    <Pagination count={Math.round(state.total/32)} page={state.page} onChange={handleChangePage} className="pagination"/>
                     <CardField data={state.houses}/>
                     <Pagination count={Math.round(state.total/32)} page={state.page} onChange={handleChangePage} className="pagination"/>
                 </div>
