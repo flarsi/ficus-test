@@ -67,7 +67,7 @@ export const HouseCard = ({data}) => {
                     </div>
                 }
             </Card>
-            <HouseModal data={data} open={modalOpen} handleClose={handleClose}/>
+            <HouseModal   data={data} open={modalOpen} handleClose={handleClose}/>
         </div>
     )
 }
