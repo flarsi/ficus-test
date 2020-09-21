@@ -10,22 +10,33 @@ import {HouseModal} from "./modal/Modal";
 
 export const HouseCard = ({data}) => {
 
-
     const [modalOpen, setModalOpen] = useState();
 
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
 
+    const imgSize = 2048;
+    let imgUrl;
+
+    if (data.images) {
+        for(let i = 0; i < data.images.length; i++){
+            if (data.images[i].id.indexOf("CLOUD")) {
+                imgUrl ="https://images.jqestate.ru/" + data.images[i].id + "-jqestate-" + imgSize;
+                break;
+            }
+        }
+    }
+
     return (
         <div className="card">
-            <Card  onClick={handleOpen}>
+            <Card onClick={handleOpen}>
                 {data ?
                     <CardActionArea>
                         <CardMedia
                             component="img"
                             alt="House"
                             height="240"
-                            image="house.jpg"
+                            image={imgUrl}
                             title="House"
                         />
                         <CardContent>

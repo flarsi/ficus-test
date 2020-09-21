@@ -12,9 +12,9 @@ export const Sell = () => {
 
     axios.get("https://api.jqestate.ru/v1/properties/country?pagination[offset]="+ 32 * state.page)
         .then(res => {
-            if (state.isFetched != res.data.pagination.offset) {
+            if (state.isFetched !== res.data.pagination.offset) {
                 setState({...state ,houses: res.data.items, isFetched: res.data.pagination.offset, total: res.data.pagination.total})
-            }else if(state.page != res.data.pagination.offset){
+            }else if(state.page !== res.data.pagination.offset){
                 // console.log(state.page === res.data.pagination.offset/32)
                 // console.log(res.data.pagination.offset/32)
             }

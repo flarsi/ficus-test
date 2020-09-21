@@ -28,12 +28,12 @@ export const BreadCrumbs = ({routes}) => {
                     luxury suburban real estate
                 </Link>
                 {
-                    routes.map((element, index) => {
+                    routes && routes.map((element, index) => {
                         if(location.pathname === element.link){
                             return (
                                 <Typography color="textPrimary" key={index}>{element.name}</Typography>
                             )
-                        }
+                        }else return null;
                     })
                 }
             </Breadcrumbs>
