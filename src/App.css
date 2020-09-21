@@ -2,6 +2,11 @@
     /*margin: 0.5rem;*/
 }
 
+body{
+    padding-right: 0px !important;
+    /*overflow: hidden;*/
+}
+
 .content{
     align-items: center;
     margin: 1.25rem 1.25rem;

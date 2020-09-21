@@ -1,27 +1,16 @@
 .cardField{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
 
   .card{
-    width: calc(33.33% - 2px) !important;
-    border-top: 1px solid #b6b6b6;
-    border-right: 1px solid #b6b6b6;
+    width: 30% !important;
+    margin: 1rem;
+
     & >
     {
       margin: 0.5rem;
-    }
-
-    &:nth-child(3n+3){
-      border-right: none;
-    }&:nth-child(8n+8){
-      border-right: none;
-    }
-
-    &.MuiPaper-elevation1{
-      box-shadow: none !important;
-      border-radius: 0;
     }
 
     .areas{

@@ -10,10 +10,13 @@ export const Sell = () => {
 
     const [state, setState] = useState({page: 1, isFetched: false});
 
-    axios.get("https://api.jqestate.ru/v1/properties/country?pagination[offset]=32")
+    axios.get("https://api.jqestate.ru/v1/properties/country?pagination[offset]="+ 32 * state.page)
         .then(res => {
-            if (state.isFetched === false) {
-                setState({...state ,houses: splitHouses(res.data.items), isFetched: true})
+            if (state.isFetched != res.data.pagination.offset) {
+                setState({...state ,houses: res.data.items, isFetched: res.data.pagination.offset, total: res.data.pagination.total})
+            }else if(state.page != res.data.pagination.offset){
+                // console.log(state.page === res.data.pagination.offset/32)
+                // console.log(res.data.pagination.offset/32)
             }
         })
         .catch(err => {
@@ -22,17 +25,7 @@ export const Sell = () => {
 
     const handleChangePage = (event, value) => {
         setState({...state, page: value});
-    }
 
-    const splitHouses = (houses) => {
-        let housesArr = [];
-        for (let i = 0; i < houses.length; i++) {
-            if ((i + 1) % 8 === 0) {
-                housesArr.push(houses.splice(0, 8))
-                i = 0
-            }
-        }
-        return housesArr
     }
 
     return (
@@ -41,8 +34,8 @@ export const Sell = () => {
             <div className="hr"></div>
             {state.houses ?
                 <div className="sell-content">
-                    <CardField data={state.houses[state.page-1]}/>
-                    <Pagination count={state.houses.length} page={state.page} onChange={handleChangePage} className="pagination"/>
+                    <CardField data={state.houses}/>
+                    <Pagination count={Math.round(state.total/32)} page={state.page} onChange={handleChangePage} className="pagination"/>
                 </div>
                 : <CircularProgress className="loader"/>}
         </div>
